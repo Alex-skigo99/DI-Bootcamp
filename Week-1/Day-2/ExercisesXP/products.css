@@ -1,0 +1,130 @@
+:root {
+    --item-width: 290px;
+    --item-higth: 580px;
+    --photo-higth: 375px;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* div {
+    border: 1px solid red;
+} */
+
+.row {
+    width: 1250px;
+    height: calc(var(--item-higth) + 20px);
+}
+
+.item {
+    width: var(--item-width);
+    height: 580px;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+.photo {
+    position: relative;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-size: contain;
+    width: var(--item-width);
+    height: 375px;
+    margin: 0;
+}
+
+.card {
+    width: var(--item-width);
+    height: calc(var(--item-higth) - var(--photo-higth));
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white;
+    color: black;
+    border: 2px solid gray;
+}
+
+.button1:hover {
+    background-color: gray;
+    color: white;
+}
+
+.name {
+    position: relative;
+    top: 3em;
+    left: 3em;
+    width: 12em;
+    text-align: center;
+}
+
+.price {
+    position: relative;
+    top: 4em;
+    left: 3em;
+    width: 12em;
+    text-align: center;
+}
+
+.button {
+    position: relative;
+    top: 5em;
+    left: 4em;
+}
+
+.New-price {
+    color: darkcyan;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.Old-price {
+    color: gray;
+    text-decoration-line: line-through;
+}
+
+.green-circle {
+    width: 50px;
+    height: 50px;
+    background-color: darkcyan;
+    border-radius: 25px;
+    position: relative;
+    top: 15px;
+    left: 15px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    align-content: center;
+}
+
+.red-circle {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 25px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    align-content: center;
+}
