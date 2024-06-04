@@ -1,0 +1,34 @@
+.wrapper {
+    height: 100vh;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: 
+    "header header header"
+    "article article aside"
+    "footer footer footer";
+
+}
+.header {
+    grid-area: header;
+    background-color: gold;
+    padding: 30px;
+    text-align: center;
+}
+.article {
+    grid-area: article;
+    background-color: lightcoral;
+    padding: 30px;
+    text-align: center;
+}
+.aside {
+    grid-area: aside;
+    background-color: lightblue;
+    padding: 30px;
+    text-align: center;
+}
+.footer {
+    grid-area: footer;
+    background-color: lightgreen;
+    padding: 30px;
+    text-align: center;
+}

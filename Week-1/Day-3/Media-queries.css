@@ -1,0 +1,51 @@
+body {
+    font-size: 16px;
+    background-color: lightyellow;
+    color: red;
+}
+
+header,
+footer {
+    background-color: lightblue;
+    padding: 10px;
+    margin: 10px;
+}
+
+main {
+    background-color: lightgreen;
+    padding: 10px;
+    margin: 10px;
+    border: 5px solid pink;
+}
+
+@media only screen and (min-width:600px) {
+    body {
+        background-color: lightcyan;
+    }
+}
+
+@media (max-width:400px) {
+    body {
+        background-color: lightgray;
+    }
+}
+
+@media print {
+
+    body,
+    header,
+    main,
+    footer {
+        background-color: white;
+        color: black;
+    }
+}
+
+/* all
+screen
+print
+speach
+tv
+projection
+braille
+ */
