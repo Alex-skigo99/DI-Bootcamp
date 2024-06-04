@@ -1,0 +1,94 @@
+html {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 10%;
+}
+
+.wrapper {
+    /* height: 1100px; */
+    /* border: 1px solid red; */
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+        "aside block1"
+        "aside block2"
+        "aside block3"
+        "aside block4";
+}
+
+.aside {
+    display: flex;
+    flex-direction: column;
+    grid-area: aside;
+    background-color: lightgray;
+    align-items: center;
+    justify-content: center;
+}
+
+.block {
+    padding: 10px;
+}
+
+.prof {
+    grid-area: block1;
+}
+
+.ed {
+    grid-area: block2;
+}
+
+.skills {
+    grid-area: block3;
+}
+
+.skills-area {
+    display: flex;
+    justify-content: space-around;
+}
+
+.exp {
+    grid-area: block4;
+}
+
+img {
+    object-fit: cover;
+    object-position: 100% 80%;
+    scale: 1.1;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    /* margin-top: 200px; */
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#my-name {
+    font-size: xx-large;
+    width: 200 px;
+    text-align: center;
+}
+
+i {
+    scale: 3;
+    color: gray;
+    margin-top: 30px;
+}
+
+@media (max-width:450px) {
+    .wrapper {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-areas:
+            "aside"
+            "block1"
+            "block2"
+            "block3"
+            "block4";
+    }
+}

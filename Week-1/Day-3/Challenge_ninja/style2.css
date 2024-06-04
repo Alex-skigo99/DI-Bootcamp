@@ -1,0 +1,30 @@
+.block {
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    display: flex;
+}
+.b1 {
+    background-color: rgb(230, 230, 230);
+}
+.b2 {
+    background-color: rgb(180, 180, 180);
+}
+.b3 {
+    background-color: rgb(110, 110, 110);
+}
+.b4 {
+    background-color: rgb(50, 50, 50);
+}

@@ -4,7 +4,7 @@
     grid-gap: 20px;
     grid-template-areas: 
     "header header header"
-    "article article aside"
+    "aside article article"
     "footer footer footer";
 
 }

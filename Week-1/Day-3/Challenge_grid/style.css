@@ -1,0 +1,27 @@
+.block {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    border: 2px solid black;
+    margin: 5px;
+}
+#wrapper {
+    display: flex;
+    width: 100%;
+    align-content: space-between;
+    /* scale: .8; */
+}
+.block-set {
+    display: flex;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.left, .right {
+    flex-direction: column;
+}
+.center {
+    align-items: center;
+}
+.center .block {
+    margin: 40px;
+}
