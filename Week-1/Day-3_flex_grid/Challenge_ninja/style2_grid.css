@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100 vh;
+}
+
+div {
+    width: 20px;
+    height: 20px;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    width: 440px;
+    height: 440px;
+    border: 1px solid white;
+    grid-gap: 5px;
+}
+
+#wrapper div:nth-child(3n + 1) {
+    background-color: orange;
+}
+#wrapper div:nth-child(3n + 2) {
+    background-color: rgb(253, 190, 145);
+}
+#wrapper div:nth-child(3n + 3) {
+    background-color: rgb(245, 98, 13);
+}
