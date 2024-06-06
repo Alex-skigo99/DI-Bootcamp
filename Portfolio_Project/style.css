@@ -1,0 +1,97 @@
+:root {
+    --back-color: rgb(18, 23, 41);
+    --high-font-color: rgb(227, 232, 239);
+    --main-font-color: rgb(151, 162, 182);
+}
+
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+/* html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+    font-family: "Raleway";
+} */
+/* * {
+    border: 1px solid lightpink; */
+/* } */
+
+h1 {
+    font-size: 3em;
+    font-weight: normal;
+}
+h1,
+h3 {
+    color: var(--high-font-color);
+}
+
+body {
+    display: grid;
+    grid-gap: 5%;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 20% 0 20%; 
+    /* padding: 0 15% 0 15%; */
+    background-color: var(--back-color);
+    color: var(--main-font-color);
+}
+
+nav {
+    padding-top: 15%;
+}
+img {
+    object-fit: cover;
+    object-position: 100% 80%;
+    scale: 1.1;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    /* margin-top: 200px; */
+    /* margin-left: 50px;
+    margin-right: 50px; */
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+
+}
+
+/* li {
+    margin: 5%;
+} */
+
+li a {
+    display: block;
+    color: var(--main-font-color);
+    padding: 8px 16px;
+    text-decoration: none;
+padding-left: 10%;
+}
+
+li a:hover {
+    color:var(--high-font-color);
+    scale: 1.1;
+}
+.card {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-top: 100px;
+    .yaer {
+        font-size: small;
+    }
+}
