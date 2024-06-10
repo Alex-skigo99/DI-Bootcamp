@@ -2,6 +2,7 @@
     --back-color: rgb(18, 23, 41);
     --high-font-color: rgb(227, 232, 239);
     --main-font-color: rgb(151, 162, 182);
+    --width-fix-nav: 400px;
 }
 
 html {
@@ -44,22 +45,20 @@ body {
 
 
 ul {
-
-    padding-top: 10%;
-    list-style-type: none;
-    margin: 0;
-    width: 20%;
     position: fixed;
+    width: var(--width-fix-nav);
+    padding-top: 5%;
+    /* list-style-type: none; */
+    margin: 0;
     height: 100%;
     overflow: auto;
-    width: 400px;
 
 }
 
 main {
     display: flex;
     flex-direction: column;
-    margin-left: 500px;
+    margin-left: calc(var(--width-fix-nav) + 100px);
 }
 
 img {
