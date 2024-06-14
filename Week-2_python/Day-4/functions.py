@@ -26,3 +26,7 @@ def user_info(**info):
     return info
 
 print(user_info(name = "Sasha", email = "s@gmail.com", age = 48))
+
+dict = {True: "x", False: "o"}
+player = False
+print(dict[player])
