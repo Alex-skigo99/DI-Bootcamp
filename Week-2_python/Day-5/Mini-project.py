@@ -1,3 +1,10 @@
+instruction = """
+\nThe game is played on a grid that's 3 squares by 3 squares.
+Players take turns putting their marks (O or X) in empty squares. Enter coordinates: column row (for example: 1 3) (q - exit)
+The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.
+When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.\n
+"""
+
 board = [
     [" ", " ", " "],
     [" ", " ", " "],
@@ -6,7 +13,7 @@ board = [
 
 
 def display_board() -> None:
-    '''To display the Tic Tac Toe board (GUI).'''
+    """To display the Tic Tac Toe board (GUI)."""
 
     global board
 
@@ -24,28 +31,31 @@ def display_board() -> None:
     print(grid_row)
 
 
-def player_input(player:str) -> bool:
-    '''To get the position from the player. Return boolean - move done or not.'''
+def player_input(player: str) -> str:
+    """To get the position from the player."""
 
     global board
 
-    move_str = input(f"{player}, your move (column row ex. 1 3): ")
-    move = move_str.split(" ")
-    row = int(move[1])
-    col = int(move[0])
-    if not ((1 <= col <= 3) and (1 <= row <= 3)):
-        print("Incorrect input. Repeat please.")
-        return False
-    if board[row-1][col-1] != " ":
-        print("Oops, it's busy here. Repeat please.")
-        return False
-    board[row-1][col-1] = player
-    return True
+    while True:
+        move_str = input(f"{player}, your move (column row): ")
+        if move_str == "q":
+            break
+        move = move_str.strip().split(" ")
+        row = int(move[1])
+        col = int(move[0])
+        if not ((1 <= col <= 3) and (1 <= row <= 3)):
+            print("Incorrect input. Repeat please.")
+        elif board[row - 1][col - 1] != " ":
+            print("Oops, it's busy here. Repeat please.")
+        else: 
+            board[row - 1][col - 1] = player
+            break
+    return move_str
 
 
 
 def check_win() -> str:
-    '''To check whether there is a winner or not. Return winner name.'''
+    """To check whether there is a winner or not. Return winner name."""
 
     global board
 
@@ -54,7 +64,7 @@ def check_win() -> str:
     for i in range(rows_num):
         col_str, row_str = "", ""
         diag_1 += board[i][i]
-        diag_2 += board[i][2-i]
+        diag_2 += board[i][2 - i]
         for j in range(rows_num):
             col_str += board[i][j]
             row_str += board[j][i]
@@ -68,28 +78,29 @@ def check_win() -> str:
         return "o"
     return ""
 
-def play():
-    '''The main function, which calls all the functions created above.'''
 
+def play():
+    """The main function, which calls all the functions created above."""
+
+    print(instruction)
     display_board()
-    players = {True: "x", False: "o"}
-    player = True
-    next_move = False
-    is_drow = True
-    for i in range(9):
-        while True:
-                if player_input(players[player]):
-                    break
-        player = not player
-        next_move = False
+    players = {True: "x", False: "o"}   # init dict of player's letters
+    player = True   # set first moove player 
+    is_drow = True  # set drow as default  
+    for _ in range(9):      # 9 mooves
+        if player_input(players[player]) == "q":
+            is_drow = False
+            break
+        player = not player     # next player
         display_board()
-        if winner:=check_win():
+        if winner := check_win():
             print(f"\n!!!!!!! {winner} is winner !!!!!!\n")
             is_drow = False
             break
     if is_drow:
         print("\nThe game ends in a tie.\n")
     print("----- Game is over ------\n")
+
 
 if __name__ == "__main__":
     play()
