@@ -47,11 +47,10 @@ def player_input(player: str) -> str:
             print("Incorrect input. Repeat please.")
         elif board[row - 1][col - 1] != " ":
             print("Oops, it's busy here. Repeat please.")
-        else: 
+        else:
             board[row - 1][col - 1] = player
             break
     return move_str
-
 
 
 def check_win() -> str:
@@ -84,14 +83,14 @@ def play():
 
     print(instruction)
     display_board()
-    players = {True: "x", False: "o"}   # init dict of player's letters
-    player = True   # set first moove player 
-    is_drow = True  # set drow as default  
-    for _ in range(9):      # 9 mooves
+    players = {True: "x", False: "o"}  # init dict of player's letters
+    player = True  # set first moove player
+    is_drow = True  # set drow as default
+    for _ in range(9):  # 9 mooves
         if player_input(players[player]) == "q":
             is_drow = False
             break
-        player = not player     # next player
+        player = not player  # next player
         display_board()
         if winner := check_win():
             print(f"\n!!!!!!! {winner} is winner !!!!!!\n")
