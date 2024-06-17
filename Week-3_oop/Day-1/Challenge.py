@@ -54,7 +54,13 @@ class Farm:
         return info
 
     def get_animal_type(self) -> list:
-        return [animal for animal in self.animals.keys()]
+        animal_list = []
+        for animal, count in self.animals.items():
+            if count > 1:
+                animal += "s"
+            animal_list.append(animal)
+        return animal_list
+
 
     def get_short_info(self) -> str:
         animals_list = self.get_animal_type()
