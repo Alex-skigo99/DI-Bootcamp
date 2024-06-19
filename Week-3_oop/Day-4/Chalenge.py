@@ -34,6 +34,7 @@
 # Note: Feel free to implement/create any attribute, method or function needed to make this work, be creative :)
 
 from collections import Counter
+import os
 
 class Text:
     def __init__(self, text:str) -> None:
@@ -61,15 +62,32 @@ class Text:
         text_list = self.text.lower().split(" ")
         text_set = set(text_list)
         return list(text_set)
+    
+    @classmethod
+    def from_file(cls, file_name:str) -> "Text":
+        file_location = os.path.dirname(__file__) + "/" + file_name
+        with open(file_location) as file:
+            text = file.read()
+        return Text(text)
+
 
 def main():
     t = Text("A good a book would sometimes cost as much as a good house")
-    if f:=t.frequency("as"):
-        print(f)
+    if f:=t.frequency(w:="as"):
+        print(w, "- ", f)
     else:
         print("This word is missing here.")
     print(t.most_common_word())
     print(t.unique_words())
+
+    print("\nAnalize text from file.")
+    tf = Text.from_file('the_stranger.txt')
+    if f:=tf.frequency(w:="do"):
+        print(w, "- ", f)
+    else:
+        print("This word is missing here.")
+    print(tf.most_common_word())
+
 
 if __name__ == "__main__":
     main()
