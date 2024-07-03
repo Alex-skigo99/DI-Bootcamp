@@ -35,6 +35,7 @@ for (let sentence of list) {
         let part_first = sentence.slice(0,wordNot);
         let last_part = sentence.slice(wordBad+3, sentence.length);
         sentence = part_first + new_phrase + last_part;
+        // let ld_phrase = sentence.slice(wordNot,wordBad+3);
         // sentence.replace(old_phrase, new_phrase);
     };
     console.log(sentence);
