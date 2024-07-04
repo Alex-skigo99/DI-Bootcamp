@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <script src="exercise_animation.js" defer></script>
+        <style>
+        p {
+          background: yellow;
+          color: red;
+        }
+        #cont_animate {
+          width: 400px;
+          height: 400px;
+          position: relative;
+          background: yellow;
+        }
+        #animate {
+          width: 50px;
+          height: 50px;
+          position: absolute;
+          background-color: red;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <button id="clear">Clear Interval</button>
+        <p><button onclick="myMove()">Click Me</button></p>
+        <div id="cont_animate">
+          <div id="animate"></div>
+        </div>
+    </body>
+    </html>
