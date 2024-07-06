@@ -1,0 +1,79 @@
+body {
+    background-color: #e5e5f7;
+    opacity: 0.9;
+    background: linear-gradient(135deg, #b29df655 25%, transparent 25%) -9px 0/ 18px 18px, linear-gradient(225deg, #b29df6 25%, transparent 25%) -9px 0/ 18px 18px, linear-gradient(315deg, #b29df655 25%, transparent 25%) 0px 0/ 18px 18px, linear-gradient(45deg, #b29df6 25%, #e5e5f7 25%) 0px 0/ 18px 18px;
+    display: flex;
+}
+
+aside {
+    display: flex;
+    justify-content: space-around;
+    width: 360px;
+    flex-wrap: wrap;
+    /* background-color: lightgray; */
+}
+.color-box {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin: 5px;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    border-radius: 10px;
+}
+.red { background-color: red; }
+.blue { background-color: blue; }
+.green { background-color: green; }
+.yellow { background-color: yellow; color: black; }
+.orange { background-color: orange; }
+.purple { background-color: purple; }
+.pink { background-color: pink; color: black; }
+.brown { background-color: brown; }
+.black { background-color: black; }
+.white { background-color: white; color: black; }
+.gray { background-color: gray; }
+.cyan { background-color: cyan; color: black; }
+.magenta { background-color: magenta; }
+.lime { background-color: lime; color: black; }
+.maroon { background-color: maroon; }
+.navy { background-color: navy; }
+.olive { background-color: olive; color: black; }
+.teal { background-color: teal; }
+.aqua { background-color: aqua; color: black; }
+.fuchsia { background-color: fuchsia; }
+.silver { background-color: silver; color: black; }
+.gold { background-color: gold; color: black; }
+
+.big-box { 
+    width: 340px;
+    height: 80px;
+    line-height: 70px;
+    font-weight: bold;
+    font-size: x-large;
+    border: 1px solid black;
+    margin: 5px;
+    text-align: center;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+}
+main {
+    width: 65%;
+    align-content: center;
+    /* margin-left: 361px; */
+}
+
+.grid-board {
+    display: grid;
+    grid-template-columns: repeat(100, 1fr);
+    grid-template-rows: repeat(75, 1fr);
+    /* gap: 1px; */
+}
+
+.cell {
+    border: 1px solid gray; 
+    width: 10px; 
+    height: 10px;
+    background-color: white;
+}
