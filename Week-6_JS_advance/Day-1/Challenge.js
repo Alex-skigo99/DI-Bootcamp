@@ -30,17 +30,20 @@ function cloneGroceries() {
     console.log(client, user)
 
 // In the function, create a variable named shopping that is equal to the groceries variable.
-    let shopping = Object.assign({}, groceries);
+    let shopping = {...groceries};
 
 // Change the value of the totalPrice key to 35$. Will we also see this modification in the shopping object ? Why ?
-    groceries.totalPrice = "35$";
+    console.log('before changing')
+
     console.log(groceries);
     console.log(shopping);
 
     // no, because it is another object
 
 // Change the value of the paid key to false. Will we also see this modification in the shopping object ? Why ?
+    groceries.totalPrice = "35$";
     groceries.other.paid = false;
+    console.log('after changing')
     console.log(groceries);
     console.log(shopping);
 };
