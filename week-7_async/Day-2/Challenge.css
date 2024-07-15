@@ -1,0 +1,43 @@
+nav {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 80px;
+    width: 100%;
+    background-color: rgb(106, 214, 106);
+    form {
+        font-size: x-large;
+        width: 60%;
+        height: 40px;
+        margin-top: 20px;
+        align-content: center;
+    }
+    button {
+        background-color: blueviolet;
+        color: white;
+        height: 40px;
+        align-self: center;
+        margin: 0px 10px;
+    }
+}
+#logo {
+    font-size: xx-large;
+    justify-self: center;
+    align-self: center;
+    margin: 10px 1px;                                            
+}
+
+body {
+    background-color: teal;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    div {
+        display: flex;
+        flex-direction: column;
+        button {
+            background-color: gray;
+        }
+    }
+}

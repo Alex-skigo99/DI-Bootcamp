@@ -135,17 +135,29 @@ let toJs = ((str) => {
     })
 });
 
+// let toMorse = (morseJS => {
+//     return new Promise((resolve, reject) => {
+//         let input = prompt("Please enter a word:").toLowerCase();
+//         result = [];
+//         [...input].forEach((letter) => {
+//             let morse_l = morseJS[letter];
+//             if (morse_l === undefined) reject('Input word contains an incorrect letter.');
+//             result.push(morse_l);
+//             resolve({word: input, morseTranslation: result});  // output object {word: '', morseTranslation: []}
+//         })
+//     })
+// });
+
 let toMorse = (morseJS => {
-    return new Promise((resolve, reject) => {
         let input = prompt("Please enter a word:").toLowerCase();
         result = [];
         [...input].forEach((letter) => {
             let morse_l = morseJS[letter];
-            if (morse_l === undefined) reject('Input word contains an incorrect letter.');
+            if (morse_l === undefined) Promise.reject('Input word contains an incorrect letter.');
             result.push(morse_l);
-            resolve({word: input, morseTranslation: result});  // output object {word: '', morseTranslation: []}
+            Promise.resolve({word: input, morseTranslation: result});  // output object {word: '', morseTranslation: []}
         })
-    })
+
 });
 
 let joinWords = (objTranslation => {
