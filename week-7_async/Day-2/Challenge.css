@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 nav {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -36,6 +39,7 @@ body {
     div {
         display: flex;
         flex-direction: column;
+        margin: 5px;
         button {
             background-color: gray;
         }

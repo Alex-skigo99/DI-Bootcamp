@@ -33,10 +33,13 @@ function deleteAll() {
     view.innerHTML = '';
 };
 
-function submit(e) {
+async function submit(e) {
     e.preventDefault();
     let q = e.target.searchText.value;
-    getData(getUrl(q))
+    let gifCollect = await getData(getUrl(q));
+    let i = Math.round(Math.random() * 50);
+    let imageSrc = gifCollect[i].images.downsized.url;
+    render_gif(imageSrc, view);
 };
 
 const getData = async(url) => {
@@ -44,9 +47,7 @@ const getData = async(url) => {
         let res = await fetch(url);
         if (res.status === 200) {
             let data = await res.json();
-            let i = Math.round(Math.random() * 50);
-            let imageSrc = data.data[i].images.downsized.url;
-            render_gif(imageSrc, view);
+            return data.data
         }
         else throw `Response error. Status ${data.meta.status}. ${data.meta.msg}`;
     } 
@@ -54,4 +55,3 @@ const getData = async(url) => {
         console.log(err)
     }
 };
-
