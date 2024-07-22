@@ -41,12 +41,9 @@ app.get('/posts/:id', (req, res) => {
 
 app.post('/posts', (req, res) => {
     let inputData = req.body;
-    let newId = data.length + 1;
     let {isValid, missing} = ValidDataItem(inputData, dataKeysToValid);
     if (!isValid) res.status(400).send(`Data (${missing}) is missing in request`);
-    const newItem = {id: newId}; // set new id
-    for (let [key, value] of Object.entries(inputData)) newItem[key] = value;
-    // const newItem = {...inputData, id:data.length+1};
+    const newItem = {...inputData, id:data.length + 1};
     data.push(newItem);
     res.status(201).json(newItem);
 });
