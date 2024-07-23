@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 const {
     _getAllUsers,
@@ -33,9 +32,7 @@ const getOneUser = (req, res) => {
 
 const insertUser = (req, res) => {
     const {email, username, first_name, last_name, password} = req.body;
-    const hash = bcrypt.hashSync(password, saltRounds);
-    console.log(hash);
-    _insertUser(email, username, first_name, last_name, hash)
+    _insertUser(email, username, first_name, last_name, password)
     .then(result => {
         res.json(result);
     })
@@ -47,8 +44,7 @@ const insertUser = (req, res) => {
 const updateUser = (req, res) => {
     const { id } = req.params;
     const {email, username, first_name, last_name, password} = req.body;
-    const hash = bcrypt.hashSync(password, saltRounds);
-    _updateUser(id, email, username, first_name, last_name, hash)
+    _updateUser(id, email, username, first_name, last_name, password)
     .then(result => {
         res.json(result);
     })
@@ -68,25 +64,27 @@ const deleteUser = (req, res) => {
         })
 };
 
-const loginUser = (req, res) => {
-    const {username, password} = req.body;
-    _loginUser(username)
-    .then(result => {
-        if ([...result] == '') {
+async function loginUser (req, res) {
+    const {username, email, password} = req.body;
+    try {
+        const result = await _loginUser(username, email);
+        if (!result) {
             res.status(404).json({message:'Username not found'});
         };
-        console.log(result[0].password, password);
-        if (!bcrypt.compareSync(password, result[0].password)) {
-            res.status(401);
+        console.log(result.password, password);
+        const passMatch = await bcrypt.compare(password+'', result.password)
+        if (!passMatch) {
+            res.status(401).json({massage: 'Password failed'})
         };
-        res.status(200).json({status: 'Authorized...', user_id: result[0].id});
-        // getAllBooks(req, res);
-    })
-    .catch(e => {
-        res.status(404).json({message:'something went wring!!!'});
-    })
+        res.status(200).json({
+            message: 'Authorized...', 
+            user_id: result.id,
+            username: result.username
+        });
+    } catch (e) {
+        res.status(404).json({message:'something went wring!!!'})
+    }
 };
-
 
 module.exports = {
     getAllUsers,
@@ -96,3 +94,10 @@ module.exports = {
     deleteUser,
     loginUser
 };
+
+// var pass = 'strong#pass'
+// const h = bcrypt.hashSync(pass, saltRounds);
+// console.log(h.length, ' - ', h);
+// pass += '1';
+// if (!bcrypt.compareSync(pass, h)) console.log('No')
+//     else console.log('Yes!');

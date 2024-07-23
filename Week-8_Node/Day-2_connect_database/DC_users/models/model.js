@@ -1,6 +1,7 @@
 const {db} = require('../config/db.js')
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const table = 'users';
-const table_pass = 'hashpwd';
 
 const _getAllUsers = () => {
     return db(table).select('id', 'email', 'username', 'first_name', 'last_name').orderBy("id");
@@ -13,22 +14,49 @@ const _getOneUser = (id) => {
 };
 
 const _insertUser = async (email, username, first_name, last_name, password) => {
-    const [id] = await db(table).insert({
-        username,
-        email,
-        first_name,
-        last_name
-      }).returning('id');
-      let user_id = id.id
-      console.log(user_id);
-    return await db(table_pass)
-        .insert({user_id, password}, ['user_id'])
+    const trx = await db.transaction();
+    try {
+        const [user] = await trx('users').insert({
+            username,
+            email,
+            first_name,
+            last_name
+          }).returning('id', 'username', 'email');
+        const hash = await bcrypt.hash(password+'', saltRounds);
+        await trx('hashpwd').insert ({
+            user_id: user.id,
+            password: hash
+        });
+        await trx.commit();
+        return user
+    } catch (error) {
+        await rollback();
+        throw error
+    }
 };
 
-const _updateUser = (id, email, username, first_name, last_name) => {
-    return db(table)
-        .where({id: id})
-        .update({email, username, first_name, last_name}, ['id', 'email', 'username', 'first_name', 'last_name'])
+const _updateUser = async (id, email, username, first_name, last_name, password) => {
+    const trx = await db.transaction();
+    try {
+        const [user] = await trx('users')
+        .where ({id: id})
+        .update({
+            username,
+            email,
+            first_name,
+            last_name
+          })
+        .returning('id', 'username', 'email');
+        const hash = await bcrypt.hash(password+'', saltRounds);
+        await trx('hashpwd')
+        .where ({user_id: id})
+        .update ({password: hash});
+        await trx.commit();
+        return user
+    } catch (error) {
+        await rollback();
+        throw error
+    }
 };
 
 const _deleteUser = (id) => {
@@ -37,11 +65,18 @@ const _deleteUser = (id) => {
         .delete()
 };
 
-const _loginUser = (user) => {
-    return db(table)
-        .join(table_pass, table + '.id', '=', table_pass + '.user_id')
-        .select('email', 'username', 'first_name', 'last_name', table_pass + '.password')
-        .where({username: user})
+const _loginUser = async (username, email) => {
+    try {
+        const user = await db('users')
+            .select('users.id', 'users.email', 'users.username', 'hashpwd.password')
+            .join('hashpwd', {'users.id': 'hashpwd.user_id'})
+            .where('users.username', username)
+            .orWhere('users.email', email)
+            .first();
+            return user
+    } catch (error) {
+        throw error
+    }
 };
 
 module.exports = {
