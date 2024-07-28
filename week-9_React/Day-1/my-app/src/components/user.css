@@ -1,0 +1,12 @@
+.users {
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    background-color: #e1bef4;
+}
+
+h2 {
+    color: blue;
+}
