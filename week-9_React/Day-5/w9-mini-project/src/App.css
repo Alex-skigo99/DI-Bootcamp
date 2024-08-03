@@ -1,0 +1,158 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+nav {
+  height: 45px;
+  background-attachment: fixed;
+  background-color: lightgrey;
+
+  * {
+    margin: 3px 6px;
+  }
+}
+
+#calc {
+  width: 100%;
+  height: calc(100vh - 45px);
+  background-color: blanchedalmond;
+
+  .main_area {
+    width: 500px;
+    height: 330px;
+    margin: auto;
+    margin-top: 150px;
+    border: 2px solid brown;
+    border-radius: 10px;
+    background-color: #a35be6;
+
+    * {
+      margin: 18px;
+    }
+
+    input {
+      text-align: center;
+      width: 150px;
+      height: 40px;
+      font-size: large;
+      font-weight: bold;
+    }
+
+    h1,
+    h3 {
+      font-weight: bold;
+      color: white;
+    }
+
+  }
+}
+
+@keyframes slidein {
+  0% {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#quote {
+  width: 100%;
+  height: calc(100vh - 45px);
+
+  /* .fadein {
+    animation: slidein forwards ease-out 1s;
+  } */
+
+  h1 {
+    color: white;
+  }
+
+  .main_area {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: auto;
+    margin-top: 150px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: white;
+
+    h2 {
+      text-align: left;
+    }
+
+    button {
+      color: white;
+      border-radius: 5px;
+      align-self: flex-end;
+      width: 100px;
+      cursor: pointer;
+    }
+
+    .div_author {
+      align-self: flex-end;
+      font-style: italic;
+    }
+  }
+}
+
+#snap {
+  width: 100%;
+  height: calc(100vh - 45px);
+  background-color: rgb(250, 182, 205);
+
+  h1 {
+    font-family: "Lobster", "Josefin Sans", Helvetica, Arial, sans-serif;
+    font-size: 4em;
+  }
+
+  h2 {
+    margin-top: 20px;
+  }
+
+  .searchMenu {
+    display: flex;
+    width: 400px;
+    margin: auto;
+    justify-content: space-around;
+  }
+
+  .btn {
+    cursor: pointer;
+  }
+
+  .pictures {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 30px;
+
+    img {
+      width: 220px;
+      height: 170px;
+      object-fit: contain;
+    }
+
+    img:hover {
+      transform: scale(1.25);
+      transition: transform 1.25s;
+    }
+  }
+}
