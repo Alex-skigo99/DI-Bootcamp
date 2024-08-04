@@ -61,7 +61,7 @@ function Quote() {
   };
 
   return (
-    <div id="quote" style={bgStyle}>
+    <div id="quote" key={quotesArr.length} style={bgStyle}>
       <h1>Quote</h1>
       <div className="main_area">
         <h2 style={textStyle} className='fadein'>"{quote}"</h2>
