@@ -5,7 +5,7 @@ function TaskFilter() {
     const { tasks, dispatch } = useContext(TaskContext);
   
     const handleFilterTask = (mode) => {
-      dispatch({ type: FILTER_TASKS, payload: taskText });
+      dispatch({ type: FILTER_TASKS, mode });
     };
   
     return (

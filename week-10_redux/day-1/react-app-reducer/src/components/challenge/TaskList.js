@@ -15,13 +15,8 @@ function TaskList() {
     };
 
     const handleEditTask = (id) => {
-        dispatch({ type: EDIT_TASK, payload: [id, newText.current] });
-        newText.current = '';
-    };
-
-    const setNewText = (value) => {
-        newText.current = value
-        console.log(newText);
+        dispatch({ type: EDIT_TASK, payload: [id, newText.current.value] });
+        newText.current.value = '';
     };
 
     return (
@@ -39,8 +34,7 @@ function TaskList() {
                         <input
                             type="text"
                             placeholder="Edit task..."
-                            value={newText.current}
-                            onChange={(e) => setNewText(e.target.value)}
+                            ref={newText}
                         />
                         <button onClick={() => handleEditTask(task.id)}>Edit</button>
                     </li>
