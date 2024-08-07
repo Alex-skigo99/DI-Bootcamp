@@ -1,7 +1,7 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-    currentDate: '2024-08-06',
+    currentDate: 'all',
     tasks: [],
 };
 

@@ -6,8 +6,8 @@ function TaskList(props) {
     const tasks_all = useSelector((state) => state.plannerReducer.tasks);
     const currentDate = useSelector((state) => state.plannerReducer.currentDate);
     const dispatch = useDispatch();
-
-    const tasks = tasks_all ? tasks_all.filter((task) => task.date == currentDate) : [];
+    let tasks = tasks_all;
+    if (currentDate !== 'all') tasks = tasks_all ? tasks_all.filter((task) => task.date == currentDate) : [];
 
     return (
         <div className="list">

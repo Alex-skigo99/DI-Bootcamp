@@ -18,6 +18,9 @@ function TaskAdder(props) {
     const handleSetDate = () => {
         dispatch(setCurrentDate(date.current.value))
     };
+    const handleSetAllDate = () => {
+        dispatch(setCurrentDate('all'))
+    };
 
     return (
         <div>
@@ -25,10 +28,10 @@ function TaskAdder(props) {
             <input
                 type="date"
                 id="date"
-                defaultValue="06/08/2024"
                 ref={date}
             />
             <button onClick={handleSetDate}>Set date</button>
+            <button onClick={handleSetAllDate}>All date</button>
             <br />
             <h3>Tasks for {currentDate}</h3>
             <input
