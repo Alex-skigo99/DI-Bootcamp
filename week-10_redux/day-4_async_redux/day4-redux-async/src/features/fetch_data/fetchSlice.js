@@ -19,7 +19,11 @@ const initialState = {
 const fetchSlice = createSlice({
     name: 'fetchReducer',
     initialState,
-    reducers:{},
+    reducers:{
+      removeUser: (state, action) => {
+        state.data = state.data.filter((item) => item.id !== action.payload);
+    }
+    },
     extraReducers: (builder) => {
         builder
         .addCase(fetchData.pending, (state) => {
@@ -38,4 +42,5 @@ const fetchSlice = createSlice({
     },
 });
 
+export const {removeUser} = fetchSlice.actions;
 export default fetchSlice.reducer;

@@ -11,7 +11,7 @@ input {
 }
 
 button {
-  margin: 10px;
+  margin: 5px;
 }
 
 #new_task_text {
@@ -31,5 +31,22 @@ button {
 
   li {
     text-align: left;
+  }
+}
+
+#ageCounter {
+  font-size: 2em;
+  border: 2px solid blue;
+  width: 300px;
+  margin: auto;
+  padding: 40px;
+  background-color: blanchedalmond;
+
+  button {
+    font-size: inherit;
+  }
+
+  p {
+    font-weight: bolder;
   }
 }
