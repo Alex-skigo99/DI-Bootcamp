@@ -2,9 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { ageDownAsync, ageUpAsync } from "./ageSlice";
 
 function AgeCounter() {
-    const age = useSelector((state) => state.rootReducer.ageReducer.age);
-    const loading = useSelector((state) => state.rootReducer.ageReducer.loading);
-    const error = useSelector((state) => state.rootReducer.ageReducer.error);
+    const age = useSelector((state) => state.ageReducer.age);
+    const loading = useSelector((state) => state.ageReducer.loading);
+    const error = useSelector((state) => state.ageReducer.error);
 
     console.log(age, loading, error);
 

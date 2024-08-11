@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { fetchData, removeUser } from "./fetchSlice";
 
 function ListData(props) {
-    const datas_all = useSelector((state) => state.rootReducer.fetchReducer.data);
-    const loading = useSelector((state) => state.rootReducer.fetchReducer.loading);
-    const error = useSelector((state) => state.rootReducer.fetchReducer.error);
+    const datas_all = useSelector((state) => state.fetchReducer.data);
+    const loading = useSelector((state) => state.fetchReducer.loading);
+    const error = useSelector((state) => state.fetchReducer.error);
     const dispatch = useDispatch();
     let datas = datas_all;
 
