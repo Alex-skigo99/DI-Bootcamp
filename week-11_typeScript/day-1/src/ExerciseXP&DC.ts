@@ -124,8 +124,8 @@ console.log(createPerson('Sara', 19));
 // Instructions
 // Given an HTML element, use a type assertion to cast it to a specific type and access its properties.
 
-
-
+let img = document.querySelector('img') as HTMLImageElement;
+img ? console.log(img.src) : console.log('There is not such element.');
 
 // 🌟 Exercise 9: Switch Statement With Complex Conditions
 // What You Will Learn:
@@ -165,10 +165,17 @@ getAction('superuser');
 // Instructions
 // Create an overloaded function greet that can either take a name and greet the person, or take no arguments and return a default greeting.
 
+function greeting(): string;
+function greeting(name: string): string;
+function greeting(name: string = 'guest'): string {
+    return `Hello ${name}! Wellcome!`
+};
 
-
+console.log(greeting('John'));
+console.log(greeting());
 
 // Daily Challenge: Type Guard With Union Types
+
 // What You Will Learn:
 // How to use type guards in TypeScript.
 // How to handle different types of inputs from a union type.
