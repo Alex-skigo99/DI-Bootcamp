@@ -112,11 +112,31 @@ console.log(combineObjects(obj1, obj2));
 // An isEmpty method that checks whether the stack is empty.
 // In this exercise, a generic class Stack<T> represents a stack data structure. The class supports operations such as push, pop, and isEmpty. The push method adds an element of type T to the stack, the pop method removes and returns the top element, and the isEmpty method checks if the stack is empty.
 
-
+class Stack<T> {
+    private stack: T[];
+    constructor () {
+        this.stack = [];
+    }
+    push(value: T) {
+        this.stack.push(value);
+    }
+    pop(): T | undefined {
+        return this.stack.pop();
+    }
+    isEmpty(): boolean {
+        return this.stack.length === 0;
+    }
+};
+let s1 = new Stack<number>();
+s1.push(10);
+s1.push(20);
+// s1.push('abc');
+// s1.push(true);
+console.log(s1.pop());
+console.log(s1.isEmpty());
 
 // 🌟 Exercise 5: Using Generics With Functions
 // What You Will Learn:
-
 // How to create a generic function that filters an array based on a predicate function.
 // How to use generics to make the function work with different types.
 // How to handle predicate functions with different types.
@@ -125,7 +145,20 @@ console.log(combineObjects(obj1, obj2));
 // Create a generic function filterArray<T> that accepts an array of type T and a predicate function (element: T) => boolean. The function should return a new array containing elements that satisfy the predicate.
 // In this exercise, a generic function filterArray<T> accepts an array of type T and a predicate function (element: T) => boolean. The function returns a new array containing elements that satisfy the predicate function. This approach demonstrates how to use generics with functions to create flexible and reusable code for filtering arrays of various types.
 
+const filterArray = <T>(arr: T[], predicate:(elem: T) => boolean) => {
+    let result: T[] = [];
+    for (const e of arr) {
+        if (predicate(e)) {
+            result.push(e);
+        }
+    }
+    return result;
+};
+const isNumPositive = (num : number): boolean => num > 0;
+const isStrShort = (str: string): boolean => str.length < 4;
 
+console.log('[2, -1, 0, 4]',filterArray([2, -1, 0, 4], isNumPositive));
+console.log('[map, game, go]', filterArray(['map', 'game', 'go'], isStrShort));
 
 // Daily Challenge : Union Type Validator
 // Last Updated: May 19th, 2024
