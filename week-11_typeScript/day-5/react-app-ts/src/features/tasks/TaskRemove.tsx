@@ -1,10 +1,10 @@
-import { memo } from "react";
+import { memo, FC } from "react";
 import { useDispatch } from "react-redux";
 import { removeTask } from "./taskSlice";
 import { ItemType } from "../../model/listItems";
 
 
-function TaskRemove(props: Pick<ItemType, 'id'>) {
+const TaskRemove: FC<Pick<ItemType, 'id'>> = (props) => {
     const dispatch = useDispatch();
     console.log('render TaskRemove-', props.id);
 
